@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container{
+        text-align: center;
+        margin: auto;
+    }
+    a {
+        display: block;
+        margin: 2%;
+    }
+</style>
+<body>
+    <div class="container">
+        <a href="{% url 'ipl:mpy' %}">1.Matches Played Per Season </a>
+        <a href="{% url 'ipl:wpt' %}">2.Wins per Team Per Season</a>
+        <a href="{% url 'ipl:extraruns2016' %}">3.Extra Runs Per Team in 2016 </a>
+        <a href="{% url 'ipl:topbowlers2015' %}">4.Top 10 Economical Bowler in 2015 </a>
+        <a href="{% url 'ipl:mpychart' %}">5.Chart of Matches played per season </a>
+        <a href="{% url 'ipl:wptchart' %}">6. Chart of Wins per Team Per Season</a>
+        <a href="{% url 'ipl:extraruns2016chart' %}">7.Chart of Extra Runs Per Team in 2016 </a>
+        <a href="{% url 'ipl:topbowlers2015chart' %}">8.Chart of Top 10 Economical Bowler in 2015</a>
+    </div>
+</body>
+</html>

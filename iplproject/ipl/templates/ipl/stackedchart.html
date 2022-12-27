@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <style>
+        #container {
+            height: 50vh;
+            margin: 0 auto;
+            /* background-color: aqua; */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container"></div>
+</body>
+
+<script>
+    // r = '{{route}}'
+    // console.log(r,typeof(r))
+    $(document).ready(function () {
+        $.ajax({
+            type: "GET",
+            url: "http://127.0.0.1:8000/ipl/{{route}}",
+            dataType: "json",
+            success: function (data) {
+                var X_values = new Set()
+                var Wins_2008 = []
+                var Wins_2009 = []
+                var Wins_2010 = []
+                var Wins_2011 = []
+                var Wins_2012 = []
+                var Wins_2013 = []
+                var Wins_2014 = []
+                var Wins_2015 = []
+                var Wins_2016 = []
+                var Wins_2017 = []
+
+                for (let i in data) {
+
+                    X_values.add(data[i]['{{x_key}}'])
+                    if (data[i].season == 2008) {
+                        Wins_2008.push(data[i]['{{y_key}}']);
+                    }
+                    else if (data[i].season == 2009) {
+                        Wins_2009.push(data[i]['{{y_key}}']);
+                    }
+                    else if (data[i].season == 2010) {
+                        Wins_2010.push(data[i]['{{y_key}}']);
+                    }
+                    else if (data[i].season == 2011) {
+                        Wins_2011.push(data[i]['{{y_key}}']);
+                    }
+                    else if (data[i].season == 2012) {
+                        Wins_2012.push(data[i]['{{y_key}}']);
+                    }
+                    else if (data[i].season == 2013) {
+                        Wins_2013.push(data[i]['{{y_key}}']);
+                    }
+                    else if (data[i].season == 2014) {
+                        Wins_2014.push(data[i]['{{y_key}}']);
+                    }
+                    else if (data[i].season == 2015) {
+                        Wins_2015.push(data[i]['{{y_key}}']);
+                    }
+                    else if (data[i].season == 2016) {
+                        Wins_2016.push(data[i]['{{y_key}}']);
+                    }
+                    else if (data[i].season == 2017) {
+                        Wins_2017.push(data[i]['{{y_key}}']);
+                    }
+
+                }
+                console.log(X_values, Wins_2008)
+
+                Highcharts.chart('container', {
+                    chart: {
+                        type: 'column'
+                    },
+                    title: {
+                        text: '{{main_title}}',
+                    },
+                    xAxis: {
+                        title: {
+                            text: '{{x_title}}',
+                        },
+
+                        categories: Array.from(X_values)
+                    },
+                    yAxis: {
+                        title: {
+                            text: '{{y_title}}',
+                        }
+                    },
+                    legend: {
+                        reversed: true
+                    },
+                    plotOptions: {
+                        series: {
+                            stacking: 'normal'
+                        }
+                    },
+                    series: [{
+                        name: '2008',
+                        data: Wins_2008
+
+                    }, {
+                        name: '2009',
+                        data: Wins_2009
+
+                    },
+                    {
+                        name: '2010',
+                        data: Wins_2010
+
+                    },
+                    {
+                        name: '2011',
+                        data: Wins_2011
+
+                    },
+                    {
+                        name: '2012',
+                        data: Wins_2012
+
+                    },
+                    {
+                        name: '2013',
+                        data: Wins_2013
+
+                    },
+                    {
+                        name: '2014',
+                        data: Wins_2014
+
+                    },
+                    {
+                        name: '2015',
+                        data: Wins_2015
+
+                    }, {
+                        name: '2016',
+                        data: Wins_2016
+
+                    }, {
+                        name: '2017',
+                        data: Wins_2017
+
+                    }]
+                });
+            }
+        });
+
+    });
+
+
+
+</script>
+
+</html>
