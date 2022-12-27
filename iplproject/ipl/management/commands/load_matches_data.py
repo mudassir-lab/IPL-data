@@ -7,7 +7,7 @@ from ipl.models import Matches
 
 
 ALREDY_LOADED_ERROR_MESSAGE = """
-If you need to reload the child data from the CSV file,
+If you need to reload the Matches data from the CSV file,
 first delete the ipldb file to destroy the database.
 Then, run `python manage.py migrate` for a new empty
 database with tables"""
